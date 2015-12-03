@@ -4,10 +4,10 @@
 
 
 int main(void){
-  char* matrix [10][10];
+  char matrix [10][10];
   int i;
   char r;
-  char* temp[20][20];
+  char temp[20];
   char* list[4];
   char words[20][20]={" c a t "," c a r "," b e a r "," s h i p "," m o u s e "," b e a t l e "," c o a t "," n e s t "," i c e "," s u g a r "," b a c o n "," f r o w n "," s m i l e "," d e a d "," f e a t h e r "," g o a t "," h e n "," j e l l y "," k o a l a "," l i p s "};
   int length;
@@ -15,7 +15,7 @@ int main(void){
   int k;
   int m;
   char otherString=0;
-  char* c;
+  char c;
   int j;
   int s;
 
@@ -77,7 +77,7 @@ int main(void){
 
     strcpy(temp, words[random] );
     token = strtok(words[random],search);
-    matrix [i][0]=token;
+    matrix [i][0] = *token;
     printf("token 1:%s",token);
     while(token!=NULL)
       {
@@ -87,7 +87,7 @@ int main(void){
 
         for( k=1;k<ans;k++){
           token = strtok(NULL, search);
-          matrix [i][k]=token;
+          matrix [i][k] = *token;
           printf("%s",token);
           printf("m:\n%s",matrix[i][k]);
 
