@@ -3,6 +3,12 @@
 #include <string.h>
 #include <stdlib.h>
 
+#ifdef DEBUG
+#define debug_print(x, y) printf(x, y)
+#else
+#define debug_print(x, y)
+#endif
+
 int main(void) {
     char matrix [10][10];
     int i;
@@ -33,7 +39,7 @@ int main(void) {
     }
 
     for( i=0; i<4; i++) {
-        printf("\n%d", i);
+        debug_print("\n%d", i);
         d=0;
 
         do {
@@ -49,7 +55,7 @@ int main(void) {
         strcpy(temp, words[random] );
         token = strtok(words[random], search);
         matrix [i][0] = *token;
-        printf("token 1:%c", *token);
+        debug_print("token 1:%c", *token);
 
         while(token!=NULL)
         {
@@ -59,8 +65,8 @@ int main(void) {
             for(k=1; k<ans; k++) {
                 token = strtok(NULL, search);
                 matrix [i][k] = *token;
-                printf("%c", *token);
-                printf("m:\n%c", matrix[i][k]);
+                debug_print("%c", *token);
+                debug_print("m:\n%c", matrix[i][k]);
             }
         }
     }
