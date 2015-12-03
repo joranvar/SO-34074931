@@ -1,12 +1,32 @@
+import Data.List
+import Data.List.Split
 import System.Random
 
 possible_words :: [String]
-possible_words = [ " c a t "," c a r "," b e a r "," s h i p "," m o u s e "," b e a t l e "," c o a t "," n e s t "," i c e "," s u g a r "," b a c o n "," f r o w n "," s m i l e "," d e a d "," f e a t h e r "," g o a t "," h e n "," j e l l y "," k o a l a "," l i p s " ]
+possible_words = [ "cat", "car", "bear", "ship", "mouse", "beatle", "coat", "nest", "ice", "sugar", "bacon", "frown", "smile", "dead", "feather", "goat", "hen", "jelly", "koala", "lips" ]
 
-makeMatrix :: w_ -> [String] -> [String]
-makeMatrix = undefined
+select :: (Eq a) => [Int] -> [a] -> [a]
+select [] _ = []
+select (x:xs) choices =
+  let choice = choices!!(max 0 (min x ((length choices) - 1)))
+  in choice:((select xs (delete choice choices)))
+
+fillMatrix :: [String] -> [String] -> [String]
+fillMatrix [] _ = []
+fillMatrix matrix [] = matrix
+fillMatrix (line:rest) (word:words) =
+  (word ++ drop (length word) line):fillMatrix rest words
+
+makeMatrix :: StdGen -> Int -> Int -> [String] -> [String]
+makeMatrix g x y possible_words =
+  let (wordrs, letterrs) = splitAt 4 $ take (4 + x * y) $ randoms g
+      words = select wordrs possible_words
+      letters = map (['a'..]!!) $ map ((flip mod) 26) $ map (abs) letterrs
+      matrix_init = chunksOf x letters
+      filled_matrix = fillMatrix matrix_init words
+  in intersperse [] $ map (intersperse '\t') $ (' ':take x ['A'..]):(zipWith (:) ['0'..] filled_matrix)
 
 main :: IO ()
 main = do
   g <- getStdGen
-  sequence_ $ map putStrLn $ makeMatrix g possible_words
+  sequence_ $ map putStrLn $ makeMatrix g 10 10 possible_words

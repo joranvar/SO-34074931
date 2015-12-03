@@ -3,6 +3,7 @@
 let
   env = haskellngPackages.ghcWithPackages (p: with p; [
     random
+    split
   ]);
 in
   stdenv.mkDerivation {
