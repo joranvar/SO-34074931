@@ -75,7 +75,7 @@ int main(void) {
     }
 
     for(j=0; j<10; j++) {
-        printf("\n\n");
+      printf("\n\n%d", j);
 
         for(s=0; s<10; s++) {
             printf("\t");
