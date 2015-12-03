@@ -6,36 +6,21 @@
 int main(void){
   char matrix [10][10];
   int i;
-  char r;
   char temp[20];
   char* list[4];
   char words[20][20]={" c a t "," c a r "," b e a r "," s h i p "," m o u s e "," b e a t l e "," c o a t "," n e s t "," i c e "," s u g a r "," b a c o n "," f r o w n "," s m i l e "," d e a d "," f e a t h e r "," g o a t "," h e n "," j e l l y "," k o a l a "," l i p s "};
   int length;
-  int num;
   int k;
-  int m;
-  char otherString=0;
   char c;
   int j;
   int s;
 
 
-  char letter;
-  char test[10];
   char* token;
 
   const char *search = " ";
-  char* empty="";
-  int size;
   int ans;
 
-  int x;
-  int y;
-  int pos;
-  int pos2;
-  int randRow;
-  int randColumn;
-  int chosen[10];
   int random;
   int d;
   int ROWS      = 10;      // number of rows
