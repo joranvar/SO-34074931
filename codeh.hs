@@ -8,7 +8,7 @@ possible_words = [ "cat", "car", "bear", "ship", "mouse", "beatle", "coat", "nes
 select :: (Eq a) => [Int] -> [a] -> [a]
 select [] _ = []
 select (x:xs) choices =
-  let choice = choices!!(max 0 (min x ((length choices) - 1)))
+  let choice = choices!!(max 0 (mod x ((length choices) - 1)))
   in choice:((select xs (delete choice choices)))
 
 fillMatrix :: [String] -> [String] -> [String]
