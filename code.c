@@ -74,7 +74,7 @@ int main(void){
           token = strtok(NULL, search);
           matrix [i][k] = *token;
           printf("%s",token);
-          printf("m:\n%s",matrix[i][k]);
+          printf("m:\n%c",matrix[i][k]);
 
         }
       }
