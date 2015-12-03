@@ -47,9 +47,9 @@ int main(void) {
         } while(d);
 
         strcpy(temp, words[random] );
-        token = strtok(words[random],search);
+        token = strtok(words[random], search);
         matrix [i][0] = *token;
-        printf("token 1:%s",token);
+        printf("token 1:%c", *token);
 
         while(token!=NULL)
         {
@@ -59,7 +59,7 @@ int main(void) {
             for(k=1; k<ans; k++) {
                 token = strtok(NULL, search);
                 matrix [i][k] = *token;
-                printf("%s", token);
+                printf("%c", *token);
                 printf("m:\n%c", matrix[i][k]);
             }
         }
