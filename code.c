@@ -64,9 +64,12 @@ int main(void) {
 
             for(k=1; k<ans; k++) {
                 token = strtok(NULL, search);
-                matrix [i][k] = *token;
-                debug_print("%c", *token);
-                debug_print("m:\n%c", matrix[i][k]);
+                if(token)
+                {
+                    matrix [i][k] = *token;
+                    debug_print("%c", *token);
+                    debug_print("m:\n%c", matrix[i][k]);
+                }
             }
         }
     }
