@@ -1,0 +1,2 @@
+codeh: codeh.hs
+	ghc $@
